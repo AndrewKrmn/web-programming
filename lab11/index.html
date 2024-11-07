@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота 11</title>
+    <script>
+        function calculateSeries() {
+            var a = parseFloat(document.getElementById('t_a').value);
+            var b = parseFloat(document.getElementById('t_b').value);
+            var sum = 0.0;
+            var i = 0;
+            var currentTerm;
+            var precision = 0.001; 
+
+            do {
+                i++;
+                var factorial = 1;
+                for (var j = 1; j <= i; j++) {
+                    factorial *= j;
+                }
+                
+                currentTerm = (2 * a * i * i + i / b) / (factorial * factorial);
+                sum += currentTerm;
+            } while (currentTerm > precision);
+
+            document.getElementById('t_result').value = sum.toFixed(4);
+        }
+    </script>
+</head>
+<body>
+    <h2>Розрахунок суми ряду за умовами варіанту 8</h2>
+    <form id="main_form">
+        <label for="t_a">a:</label>
+        <input type="text" id="t_a" value="1"><br><br>
+        
+        <label for="t_b">b:</label>
+        <input type="text" id="t_b" value="2"><br><br>
+        
+        <label for="t_result">Результат:</label>
+        <input type="text" id="t_result" readonly><br><br>
+        
+        <input type="button" onclick="calculateSeries();" value="Розрахувати">
+    </form>
+</body>
+</html>

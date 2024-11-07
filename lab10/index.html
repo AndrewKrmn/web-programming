@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота 10</title>
+    <script>
+        function calculate() {
+            var a = parseFloat(document.getElementById('t_a').value);
+            var b = parseFloat(document.getElementById('t_b').value);
+            var c = parseFloat(document.getElementById('t_c').value);
+            var result;
+
+            if (a > 0 && b > 0) {
+                result = a * b + c;
+            } else if (a < 0 || b < 0) {
+                result = a - b - c;
+            } else {
+                result = (a + b) * c;
+            }
+
+            document.getElementById('t_result').value = result;
+        }
+    </script>
+</head>
+<body>
+    <h2>Розрахунок за умовами варіанту 8</h2>
+    <form id="main_form">
+        <label for="t_a">a:</label>
+        <input type="text" id="t_a" value="1"><br><br>
+        
+        <label for="t_b">b:</label>
+        <input type="text" id="t_b" value="2"><br><br>
+        
+        <label for="t_c">c:</label>
+        <input type="text" id="t_c" value="3"><br><br>
+        
+        <label for="t_result">Результат:</label>
+        <input type="text" id="t_result" readonly><br><br>
+        
+        <input type="button" onclick="calculate();" value="Розрахувати">
+    </form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Динамічна таблиця - Варіант 8</title>
+    <script>
+        var rows, cols;
+
+        function buildTable() {
+            rows = parseInt(document.getElementById("row_count").value);
+            cols = parseInt(document.getElementById("col_count").value);
+            let tableHTML = "<table border='1'>\n";
+            for (let i = 1; i <= rows; i++) {
+                tableHTML += "<tr>\n";
+                for (let j = 1; j <= cols; j++) {
+                    tableHTML += `<td><input type="text" id="cell_${i}_${j}" value="${i * j}"></td>\n`;
+                }
+                tableHTML += "</tr>\n";
+            }
+            tableHTML += "</table>";
+            document.getElementById("table_container").innerHTML = tableHTML;
+        }
+
+        function calculateSums() {
+            let totalSum = 0;
+            let secondRowSum = 0;
+            let thirdColSum = 0;
+            let diagSum = 0;
+            let lastColProduct = 1;
+
+            for (let i = 1; i <= rows; i++) {
+                for (let j = 1; j <= cols; j++) {
+                    let cellValue = parseInt(document.getElementById(`cell_${i}_${j}`).value) || 0;
+                    totalSum += cellValue;
+                    if (i === 2) secondRowSum += cellValue;
+                    if (j === 3) thirdColSum += cellValue;
+                    if (i === j) diagSum += cellValue;
+                    if (j === cols) lastColProduct *= cellValue;
+                }
+            }
+
+            alert(`Сума всіх елементів: ${totalSum}\nСума другого рядка: ${secondRowSum}\nСума третього стовпця: ${thirdColSum}\nСума діагоналі: ${diagSum}\nДобуток останнього стовпця: ${lastColProduct}`);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label>Кількість рядків: <input type="number" id="row_count" value="5"></label><br>
+        <label>Кількість стовпців: <input type="number" id="col_count" value="5"></label><br>
+        <button type="button" onclick="buildTable()">Побудувати таблицю</button>
+        <button type="button" onclick="calculateSums()">Обчислити значення</button>
+    </form>
+    <div id="table_container"></div>
+</body>
+</html>

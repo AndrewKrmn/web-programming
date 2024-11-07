@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота 9</title>
+    <script>
+        function displayMessage(message) {
+            document.getElementById('output').value = message;
+        }
+    </script>
+</head>
+<body onload="displayMessage('Сторінка завантажена')">
+    <form id="main_form">
+        <input type="text" size="50" placeholder="Введіть текст тут" 
+               onfocus="displayMessage('Текстове поле отримало фокус')" 
+               onchange="displayMessage('Зміст текстового поля змінено')" 
+               onselect="displayMessage('Виділено текст у полі вводу')"><br><br>
+        
+        <input type="text" size="50" id="output" readonly placeholder="Результат подій буде тут">
+    </form>
+</body>
+</html>
